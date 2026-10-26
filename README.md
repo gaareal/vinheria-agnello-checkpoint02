@@ -11,7 +11,7 @@ Projeto de apresentação da Vinheria Agnello e sistema básico de cadastro de v
 
 ## GitHub Pages
 
-https://almeidalds.github.io/vinharia-agnello/
+https://gaareal.github.io/vinheria-agnello-checkpoint02/
 
 ## Como executar
 
@@ -21,8 +21,8 @@ https://almeidalds.github.io/vinharia-agnello/
 4. Navegue pelo menu para visitar história, produtos, contato e galeria.
 5. Recarregue a página inicial para realizar outro cadastro.
 
-Não exige instalação de bibliotecas. 
-As fontes do Google dependem de internet; há fontes alternativas locais. 
+Não exige instalação de bibliotecas.
+As fontes do Google dependem de internet; há fontes alternativas locais.
 Imagens e vídeo são arquivos locais!
 
 ## Estrutura
@@ -46,6 +46,7 @@ src/
         imgs/
         videos/vinho-fundo.mp4
 ```
+
 ## Efeitos Visuais
 
 Na passagem da versão inicial para a versão final, foi criado o arquivo `src/css/efeitos.css`, importado pelo `style.css`. Esse arquivo centraliza os efeitos de interação e as animações, além de acrescentar novos detalhes visuais.
@@ -93,4 +94,4 @@ O JavaScript está ao final do body apenas na página inicial. Faz quatro pergun
 
 O formulário de contato é um modelo HTML demonstrativo: os campos podem ser preenchidos e limpos, mas o botão de envio fica desativado porque não há serviço de recebimento de mensagens. Há política de privacidade fictícia. Foram usados rótulos associados aos campos, tipos de entrada apropriados e agrupamento de opções.
 
-A galeria inclui seis imagens e links para os arquivos originais para que seja possível expandi-la em tela cheia. 
+A galeria inclui seis imagens e links para os arquivos originais para que seja possível expandi-la em tela cheia.
