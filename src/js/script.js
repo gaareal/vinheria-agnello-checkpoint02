@@ -123,4 +123,27 @@ function cadastrarVinhos() {
             break;
         }
 
+        alert("Vinho cadastrado com sucesso!");
+
+        continuar = prompt("Deseja cadastrar outro vinho? (sim/nao)");
+
+        if (continuar == null) {
+            continuar = "nao";
+        } else {
+            continuar = continuar.toLowerCase();
+        }
+
+        while (continuar != "sim" && continuar != "nao") {
+            continuar = prompt("Digite sim ou nao:");
+
+            if (continuar == null) {
+                continuar = "nao";
+            } else {
+                continuar = continuar.toLowerCase();
+            }
+        }
+    }
+    alert("Total de vinhos cadastrados: " + contador);
+}
+cadastrarVinhos();
        
