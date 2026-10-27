@@ -17,6 +17,11 @@ function validarNumero(numero) {
 function cadastrarVinhos() {
     var continuar = "sim";
     var contador = 0;
+    var estoqueBaixo = 0;
+    var safraMaisAntiga = null;
+    var nomeSafraMaisAntiga = "";
+    var limiteEstoqueBaixo = 5; // Estoque baixo: menos de 5 garrafas. 
+
     while (continuar == "sim") {
         contador = contador + 1;
 
@@ -104,6 +109,17 @@ function cadastrarVinhos() {
             contador = contador - 1;
             break;
         }
+
+        if (Number(quantidade) < limiteEstoqueBaixo) {
+            estoqueBaixo = estoqueBaixo + 1;
+            alert("Estoque baixo: " + nome + " possui apenas " + quantidade + " garrafas em estoque.");
+        }
+
+        if (safraMaisAntiga == null || Number(safra) < safraMaisAntiga) {
+            safraMaisAntiga = Number(safra);
+            nomeSafraMaisAntiga = nome;
+        }
+
 console.log(
     "VINHO: " + contador + "\n" +
     "Nome: " + nome + "\n" +
@@ -131,7 +147,15 @@ console.log(
             }
         }
     }
-    alert("Total de vinhos cadastrados: " + contador);
+    var relatorio =
+    "RELATÓRIO FINAL - VINHERIA AGNELLO\n" +
+    "Total de vinhos cadastrados: " + contador + "\n" +
+    "Vinhos com estoque baixo: " + estoqueBaixo + "\n" +
+    "Safra mais antiga: " + safraMaisAntiga + "\n" + 
+    "Vinho da safra mais antiga:" + nomeSafraMaisAntiga;
+
+    console.log(relatorio);
+    alert(relatorio);
 }
 cadastrarVinhos();
        
