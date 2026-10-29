@@ -38,11 +38,11 @@ function cadastrarVinhos() {
     }
     var tipo = prompt(
       "Digite o tipo do vinho:\n" +
-        "1 - Tinto\n" +
-        "2 - Espumante\n" +
-        "3 - Branco\n" +
-        "4 - Rosé\n" +
-        "5 - Doce",
+      "1 - Tinto\n" +
+      "2 - Espumante\n" +
+      "3 - Branco\n" +
+      "4 - Rosé\n" +
+      "5 - Doce",
     );
     while (
       tipo != "1" &&
@@ -55,10 +55,10 @@ function cadastrarVinhos() {
 
       tipo = prompt(
         "1 - Tinto\n" +
-          "2 - Espumante\n" +
-          "3 - Branco\n" +
-          "4 - Rosé\n" +
-          "5 - Doce",
+        "2 - Espumante\n" +
+        "3 - Branco\n" +
+        "4 - Rosé\n" +
+        "5 - Doce",
       );
     }
     let classificacaoVinho = prompt(
@@ -133,10 +133,10 @@ function cadastrarVinhos() {
       estoqueBaixo = estoqueBaixo + 1;
       alert(
         "Estoque baixo: " +
-          nome +
-          " possui apenas " +
-          quantidade +
-          " garrafas em estoque.",
+        nome +
+        " possui apenas " +
+        quantidade +
+        " garrafas em estoque.",
       );
     }
 
@@ -147,22 +147,22 @@ function cadastrarVinhos() {
 
     console.log(
       "VINHO: " +
-        contador +
-        "\n" +
-        "Nome: " +
-        nome +
-        "\n" +
-        "Tipo: " +
-        tipo +
-        "\n" +
-        "Classificação: " +
-        classificacaoVinho +
-        "\n" +
-        "Safra: " +
-        safra +
-        "\n" +
-        "Quantidade em estoque: " +
-        quantidade,
+      contador +
+      "\n" +
+      "Nome: " +
+      nome +
+      "\n" +
+      "Tipo: " +
+      tipo +
+      "\n" +
+      "Classificação: " +
+      classificacaoVinho +
+      "\n" +
+      "Safra: " +
+      safra +
+      "\n" +
+      "Quantidade em estoque: " +
+      quantidade,
     );
     alert("Vinho cadastrado com sucesso! Confira os dados no console.");
 
@@ -171,7 +171,7 @@ function cadastrarVinhos() {
     if (continuar == null) {
       continuar = "nao";
     } else {
-      continuar = continuar.toLowerCase();
+      continuar = continuar.toLowerCase().replace("ã", "a");
     }
 
     while (continuar != "sim" && continuar != "nao") {
@@ -180,7 +180,7 @@ function cadastrarVinhos() {
       if (continuar == null) {
         continuar = "nao";
       } else {
-        continuar = continuar.toLowerCase();
+        continuar = continuar.toLowerCase().replace("ã", "a");
       }
     }
   }
