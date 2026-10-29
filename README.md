@@ -1,6 +1,113 @@
-# Vinheria Agnello
+﻿# Vinheria Agnello
 
-Projeto de apresentação da Vinheria Agnello e sistema básico de cadastro de vinhos. O site possui cinco páginas, estilos compartilhados e um cadastro com nome, tipo, safra e quantidade em estoque, exibido no console do navegador.
+Site desenvolvido para o Checkpoint 02, com apresentação da Vinheria Agnello, catálogo de vinhos, galeria e formulário demonstrativo de contato. A página inicial também oferece um cadastro de vinhos via JavaScript, com validações, alertas de estoque baixo e relatório final.
+
+[Acessar o site no GitHub Pages](https://gaareal.github.io/vinheria-agnello-checkpoint02/)
+
+## Páginas
+
+| Página | Conteúdo |
+| --- | --- |
+| [Início](index.html) | Apresentação da vinheria, vídeo de fundo e cadastro por caixas de diálogo. |
+| [História](src/pages/historia.html) | História e apresentação da empresa. |
+| [Produtos](src/pages/produtos.html) | Tipos de vinho e tabela estática de produtos. |
+| [Contato](src/pages/contato.html) | Formulário demonstrativo com campos de identificação, assunto e mensagem. |
+| [Galeria](src/pages/galeria.html) | Seis imagens com links para os arquivos originais. |
+
+## Como executar
+
+1. Baixe ou clone o repositório e mantenha a estrutura de pastas.
+2. Abra `index.html` em um navegador atualizado.
+3. Preencha as caixas de diálogo do cadastro que aparecem ao abrir a página inicial.
+4. Abra o console do navegador com `Ctrl + Shift + J` no Chrome ou Edge para Windows para consultar os registros.
+5. Responda `nao` à pergunta sobre um novo cadastro para visualizar o relatório final e continuar navegando pelo site.
+
+Não é necessário instalar bibliotecas, executar comandos de build ou configurar um banco de dados. Imagens e vídeo estão no projeto. As fontes **DM Sans** e **Playfair Display** são carregadas pelo Google Fonts e dependem de internet; o CSS define fontes alternativas.
+
+## Cadastro de vinhos
+
+O arquivo [`src/js/script.js`](src/js/script.js) executa o cadastro automaticamente na página inicial, usando `prompt()`, `alert()` e `console.log()`.
+
+### Dados solicitados
+
+| Campo | Opções e regras implementadas |
+| --- | --- |
+| Nome | Não aceita campo vazio nem cancelamento. |
+| Tipo | `1` — Tinto; `2` — Espumante; `3` — Branco; `4` — Rosé; `5` — Doce. |
+| Classificação | `1` — Jovem; `2` — Amadurecido; `3` — Antigo. |
+| Safra | Ano inteiro entre **1900 e 2026**, conforme o limite fixo do código. |
+| Quantidade em estoque | Número inteiro positivo. |
+
+Entradas inválidas fazem a pergunta ser repetida. O tipo é exibido no console pelo código numérico escolhido; a classificação é exibida por extenso.
+
+### Alertas e relatório
+
+- Cada cadastro concluído exibe uma confirmação e registra os dados no console.
+- Estoques com **menos de 5 garrafas** geram um alerta.
+- É possível continuar respondendo `sim` ou encerrar com `nao`. Letras maiúsculas são convertidas para minúsculas.
+- O sistema armazena até **cinco vinhos por execução**.
+- Ao encerrar, um relatório no console e em uma caixa de alerta apresenta o total cadastrado, a quantidade de vinhos com estoque baixo e o nome e o ano da safra mais antiga.
+
+### Limitações atuais
+
+Os registros ficam apenas na memória durante a execução: não há armazenamento persistente, integração com a tabela de produtos ou banco de dados. Recarregar a página reinicia o cadastro.
+
+Cancelar uma pergunta de dados não encerra o fluxo: o campo é solicitado novamente. O cancelamento encerra o cadastro apenas na pergunta sobre cadastrar outro vinho. Depois do quinto registro, responder `sim` ainda abre as perguntas de um sexto vinho; o limite é informado após o preenchimento, e esse registro é descartado.
+
+## Interface e efeitos visuais
+
+A identidade visual combina tons de vinho e creme, fontes serifadas nos destaques e layouts adaptados para telas menores. Os estilos principais ficam em [`style.css`](src/css/style.css), que importa [`efeitos.css`](src/css/efeitos.css).
+
+### Animações e interações
+
+- Elevação dos cartões de vinhos, itens da galeria e artigos de detalhes ao passar o mouse.
+- Flutuação da imagem principal, com rotação e ampliação na interação.
+- Rotação do símbolo da marca ao passar o mouse ou receber foco pelo teclado.
+- Brilho suave no texto “Desde 2011”.
+- Preenchimento e ondulação de vinho no botão “Conheça nossos vinhos”.
+- Seleção de texto com as cores da marca e letra capitular na abertura da história.
+
+As pseudo-classes `:hover`, `:focus-visible` e `:active` controlam estados de interação. Os pseudo-elementos `::before` e `::after` criam as camadas decorativas do botão; `::selection` personaliza a seleção de texto, e `::first-letter` cria a letra capitular.
+
+### Vídeo e acessibilidade
+
+O arquivo [`video-fundo.js`](src/js/video-fundo.js) controla a reprodução do vídeo de fundo e o botão de pausar/reproduzir. Quando a preferência do sistema por movimento reduzido está ativa, o vídeo não inicia automaticamente; o CSS também desativa animações e transições dos efeitos.
+
+O projeto inclui textos alternativos nas imagens, identificação da página atual no menu, foco visível e rótulos associados aos campos do formulário. As imagens da galeria usam carregamento sob demanda (`loading="lazy"`).
+
+## Formulário de contato
+
+O formulário permite preencher dados e limpar os campos, mas o botão de envio está desativado. Trata-se de uma demonstração sem serviço de recebimento de mensagens. Há campos de nome, e-mail, telefone, assunto, preferência de contato e mensagem, além de uma confirmação de ciência sobre a demonstração.
+
+## Tecnologias
+
+- **HTML5:** estrutura das páginas, navegação, tabelas, formulário, imagens e vídeo.
+- **CSS3:** identidade visual, layouts responsivos, transições, animações e pseudo-elementos.
+- **JavaScript:** funções de validação, condicionais, laços de repetição, conversão numérica, relatório e controle do vídeo.
+
+## Estrutura do projeto
+
+```text
+vinheria-agnello-checkpoint02/
+├── index.html
+├── README.md
+└── src/
+    ├── css/
+    │   ├── style.css
+    │   └── efeitos.css
+    ├── js/
+    │   ├── script.js
+    │   └── video-fundo.js
+    ├── pages/
+    │   ├── historia.html
+    │   ├── produtos.html
+    │   ├── contato.html
+    │   └── galeria.html
+    └── assets/
+        ├── imgs/
+        └── videos/
+            └── vinho-fundo.mp4
+```
 
 ## Integrantes
 
@@ -8,90 +115,3 @@ Projeto de apresentação da Vinheria Agnello e sistema básico de cadastro de v
 - Francisco Carlos Rocha de Almeida Junior
 - Daniel de Oliveira Zuin
 - Gabriel Almeida Areal
-
-## GitHub Pages
-
-https://gaareal.github.io/vinheria-agnello-checkpoint02/
-
-## Como executar
-
-1. Extraia o projeto e abra `index.html` no navegador.
-2. Responda aos quatro prompts e confirme o aviso de cadastro.
-3. Abra o console (Ctrl + Shift + J no Chrome/Edge para Windows) para conferir os dados.
-4. Navegue pelo menu para visitar história, produtos, contato e galeria.
-5. Recarregue a página inicial para realizar outro cadastro.
-
-Não exige instalação de bibliotecas.
-As fontes do Google dependem de internet; há fontes alternativas locais.
-Imagens e vídeo são arquivos locais!
-
-## Estrutura
-
-```projeto
-index.html
-README.md
-src/
-    css/
-    style.css
-    efeitos.css
-    js/
-    script.js
-    video-fundo.js
-    pages/
-        historia.html
-        produtos.html
-        contato.html
-        galeria.html
-    assets/
-        imgs/
-        videos/vinho-fundo.mp4
-```
-
-## Efeitos Visuais
-
-Na passagem da versão inicial para a versão final, foi criado o arquivo `src/css/efeitos.css`, importado pelo `style.css`. Esse arquivo centraliza os efeitos de interação e as animações, além de acrescentar novos detalhes visuais.
-
-### Efeitos adicionados na versão final
-
-- **Destaque nos artigos da seção de detalhes:** ao passar o mouse, os artigos sobem 8 pixels e aumentam levemente de tamanho com `translateY()` e `scale()`, utilizando uma transição suave.
-- **Interação com a imagem principal:** ao passar o mouse, a imagem recebe uma rotação de −3 graus e uma ampliação de 5%. As propriedades `rotate` e `scale` são usadas separadamente para preservar a animação de flutuação.
-- **Rotação do símbolo da marca:** o símbolo realiza uma volta completa ao passar o mouse ou ao focar o link da marca pelo teclado.
-- **Brilho no texto da safra:** uma animação contínua de `text-shadow` cria um brilho suave, com duração de 3 segundos por ciclo.
-- **Flutuação da imagem na página inicial:** a imagem principal sobe e desce suavemente em um ciclo de 4 segundos, simulando uma flutuação.
-- **Seleção de texto personalizada:** os trechos selecionados passam a utilizar fundo na cor vinho e texto na cor creme, acompanhando a identidade visual do site.
-- **Letra capitular na página de história:** a primeira letra do parágrafo de abertura recebe tamanho ampliado, fonte serifada e cor vinho, criando um destaque editorial.
-
-### Efeitos existentes reorganizados
-
-Os seguintes efeitos já estavam presentes na versão inicial e foram transferidos do `style.css` para o `efeitos.css`:
-
-- Transições de cor e borda nos links do menu.
-- Elevação e mudança de sombra nos cartões de vinhos e itens da galeria ao passar o mouse.
-- Transições de cor e fundo nos botões.
-- Animação de preenchimento e ondulação de vinho no botão “Conheça nossos vinhos”, acionada ao passar o mouse, focar pelo teclado ou pressionar o botão.
-
-### Pseudo-classes aplicadas
-
-- `:hover`: aplica efeitos quando o cursor está sobre um elemento, como elevação dos cartões, ampliação da imagem principal, rotação do símbolo da marca e preenchimento animado do botão de vinho.
-- `:focus-visible`: destaca interações pelo teclado, acionando a rotação do símbolo da marca e o efeito de preenchimento do botão de vinho quando esses elementos recebem foco visível.
-- `:active`: aplica o efeito de preenchimento do botão de vinho enquanto ele está sendo pressionado.
-
-### Pseudo-elementos aplicados
-
-- `::before` e `::after`: criam duas camadas decorativas no botão de vinho, simulando o líquido que sobe e ondula durante a interação, sem adicionar elementos ao HTML.
-- `::selection`: personaliza os trechos de texto selecionados com fundo vinho e letras na cor creme.
-- `::first-letter`: estiliza a primeira letra do parágrafo de abertura da página de história como uma letra capitular, com tamanho ampliado, fonte serifada e cor vinho.
-
-## Tecnologias e funcionamento
-
-- HTML semântico: cabeçalho, menu, conteúdo principal, rodapé, tabela, formulário, imagens e vídeo usado como plano de fundo da área inicial.
-- CSS: cores vinho e creme, estilos de formulário e galeria, adaptação para telas pequenas e foco visível ao navegar pelo teclado.
-- JavaScript básico: variáveis, concatenação, `prompt()`, `alert()` e `console.log()`.
-
-O JavaScript está ao final do body apenas na página inicial. Faz quatro perguntas, apresenta exatamente “Cadastro realizado! Veja os detalhes no console.” e depois exibe os dados em uma única saída organizada. Os valores permanecem como texto; não há validação, cálculos, armazenamento persistente ou banco de dados. Um campo vazio permanece vazio e Cancelar retorna `null`, sem interromper as perguntas seguintes. A tabela da página de produtos é estática.
-
-## Contato e galeria
-
-O formulário de contato é um modelo HTML demonstrativo: os campos podem ser preenchidos e limpos, mas o botão de envio fica desativado porque não há serviço de recebimento de mensagens. Há política de privacidade fictícia. Foram usados rótulos associados aos campos, tipos de entrada apropriados e agrupamento de opções.
-
-A galeria inclui seis imagens e links para os arquivos originais para que seja possível expandi-la em tela cheia.
